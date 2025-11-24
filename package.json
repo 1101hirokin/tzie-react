@@ -1,7 +1,7 @@
 {
-    "name": "tzie-react",
+    "name": "@tzie/components-react",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.0.0-alpha.0",
     "author": "Hiroki Nakatani",
     "type": "module",
     "packageManager": "pnpm@10.23.0",
@@ -25,6 +25,7 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
+        "@tzie/tokens": "0.0.0-alpha.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0"
     },
