@@ -15,6 +15,9 @@
             "require": "./dist/index.cjs"
         }
     },
+    "sideEffects": [
+        "./dist/**/*.css"
+    ],
     "scripts": {
         "dev": "vite",
         "preview": "vite preview",
