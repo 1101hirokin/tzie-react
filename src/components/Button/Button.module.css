@@ -1,0 +1,35 @@
+.Button {
+    /* --- Reset styles --- */
+    /* Reset button styles */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+
+    /* Reset anchor styles */
+    text-decoration: none;
+
+    /* Common resets */
+    display: inline-block;
+    line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* --- Button Component styles --- */
+    display: inline-flex;
+    padding: var(--tz-spacing-2x) var(--tz-spacing-3x);
+    font: var(--tz-typography-button);
+
+    &.block {
+        display: block;
+        width: 100%;
+    }
+}
+
+.Button:focus {
+    outline: revert;
+}

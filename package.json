@@ -28,7 +28,8 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
-        "@tzie/tokens": "0.0.0-alpha.1",
+        "@tzie/tokens": "0.0.0-alpha.2",
+        "clsx": "^2.1.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0"
     },

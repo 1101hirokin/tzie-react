@@ -1,0 +1,89 @@
+/* Root variables */
+:root {
+    /* デフォルトのフォントサイズ */
+    font-size: 14px;
+    /* カラーモードの切り替えをサポート */
+    /* color-scheme: light dark; */
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* HTML and Body */
+html,
+body {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Android用のテキストサイズ調整を無効化 */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1.334;
+    font-family: var(--tz-font-family-normal);
+}
+
+/* Images */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+    /* Android用のタップハイライトを制御 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Form elements */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    /* Android用のタップハイライトを制御 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove default button styles */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Avoid text overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+code {
+    font-family: var(--tz-font-family-code);
+}
+
+/* Root element for React */
+#root {
+    isolation: isolate;
+}
