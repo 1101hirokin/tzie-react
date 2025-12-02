@@ -1,15 +1,23 @@
 import clsx from 'clsx';
-import { getElevationClassName, type TzieElevation } from '../../tokens';
+import {
+    getElevationClassName,
+    getShapeClassName,
+    type TzieElevation,
+    type TzieShape,
+} from '../../tokens';
 import type { Modify, TzieComponentProps } from '../../utils';
 import commonStyles from '../component.module.css';
 import styles from './Button.module.css';
+import { Text } from '../Text/Text';
 
 type ButtonProps = Modify<
     TzieComponentProps,
     {
-        elevation?: TzieElevation;
         block?: boolean;
         disabled?: boolean;
+
+        elevation?: TzieElevation;
+        shape?: TzieShape;
 
         // button specific props
         onClick?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -30,6 +38,7 @@ export const Button: React.FC<ButtonProps> = (p) => {
         style,
         children,
         elevation = 0,
+        shape = 'rounded',
         block = false,
         disabled = false,
         onClick,
@@ -38,6 +47,7 @@ export const Button: React.FC<ButtonProps> = (p) => {
     } = p;
 
     const elevationClassName = getElevationClassName(elevation);
+    const shapeClassName = getShapeClassName(shape);
 
     const isAnchor = Boolean(href);
     const Element = isAnchor ? 'a' : 'button';
@@ -50,6 +60,7 @@ export const Button: React.FC<ButtonProps> = (p) => {
                 block && styles.block,
                 className,
                 elevationClassName,
+                shapeClassName,
             )}
             style={{
                 ...style,
@@ -61,7 +72,7 @@ export const Button: React.FC<ButtonProps> = (p) => {
             aria-disabled={disabled}
             role={isAnchor ? 'button' : undefined}
         >
-            {children}
+            <Text typography="button">{children}</Text>
         </Element>
     );
 };

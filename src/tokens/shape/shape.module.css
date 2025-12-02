@@ -1,0 +1,18 @@
+.tz-shape-circular {
+    border-radius: var(--tz-shape-circular);
+}
+.tz-shape-rounded {
+    border-radius: var(--tz-shape-rounded);
+}
+.tz-shape-rounded-s {
+    border-radius: var(--tz-shape-rounded-s);
+}
+.tz-shape-rounded-m {
+    border-radius: var(--tz-shape-rounded-m);
+}
+.tz-shape-rounded-l {
+    border-radius: var(--tz-shape-rounded-l);
+}
+.tz-shape-angular {
+    border-radius: var(--tz-shape-angular);
+}

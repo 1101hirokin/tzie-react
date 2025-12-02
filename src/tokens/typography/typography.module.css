@@ -1,0 +1,45 @@
+.tz-typography-title {
+    font: var(--tz-typography-title);
+}
+.tz-typography-heading-1 {
+    font: var(--tz-typography-heading-1);
+}
+.tz-typography-heading-2 {
+    font: var(--tz-typography-heading-2);
+}
+.tz-typography-heading-3 {
+    font: var(--tz-typography-heading-3);
+}
+.tz-typography-heading-4 {
+    font: var(--tz-typography-heading-4);
+}
+.tz-typography-heading-5 {
+    font: var(--tz-typography-heading-5);
+}
+.tz-typography-heading-6 {
+    font: var(--tz-typography-heading-6);
+}
+.tz-typography-subtitle-1 {
+    font: var(--tz-typography-subtitle-1);
+}
+.tz-typography-subtitle-2 {
+    font: var(--tz-typography-subtitle-2);
+}
+.tz-typography-body-1 {
+    font: var(--tz-typography-body-1);
+}
+.tz-typography-body-2 {
+    font: var(--tz-typography-body-2);
+}
+.tz-typography-caption {
+    font: var(--tz-typography-caption);
+}
+.tz-typography-overline {
+    font: var(--tz-typography-overline);
+}
+.tz-typography-button {
+    font: var(--tz-typography-button);
+}
+.tz-typography-code {
+    font: var(--tz-typography-code);
+}
