@@ -1,14 +1,20 @@
 import clsx from 'clsx';
 import {
     getElevationClassName,
+    getFocusableClassName,
     getShapeClassName,
+    getVariantClassName,
+    getVariantStyles,
     type TzieElevation,
     type TzieShape,
 } from '../../tokens';
 import type { Modify, TzieComponentProps } from '../../utils';
-import commonStyles from '../component.module.css';
 import styles from './Button.module.css';
+import { getCenteringClassName, getTzComponentClassName } from '../component';
+import React from 'react';
+import { ButtonLeading, ButtonTrailing, isButtonSlot, type ButtonSlotFC } from './buttonSlots';
 import { Text } from '../Text/Text';
+import { getFocusRingTargetClassName } from '../../tokens/focusable/focusable';
 
 type ButtonProps = Modify<
     TzieComponentProps,
@@ -18,6 +24,12 @@ type ButtonProps = Modify<
 
         elevation?: TzieElevation;
         shape?: TzieShape;
+        variant?: 'filled' | 'outlined' | 'text';
+        color?: string;
+        multiline?: boolean;
+
+        leading?: React.ReactNode;
+        trailing?: React.ReactNode;
 
         // button specific props
         onClick?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -31,14 +43,26 @@ type ButtonProps = Modify<
     }
 >;
 
-export const Button: React.FC<ButtonProps> = (p) => {
+type ButtonCompound = React.FC<ButtonProps> & {
+    Leading: ButtonSlotFC;
+    Trailing: ButtonSlotFC;
+};
+
+export const Button: ButtonCompound = (p) => {
     const {
         id,
         className,
         style,
         children,
+
         elevation = 0,
         shape = 'rounded',
+        variant = 'filled',
+        color = 'primary',
+        multiline = false,
+
+        leading = null,
+        trailing = null,
         block = false,
         disabled = false,
         onClick,
@@ -48,21 +72,43 @@ export const Button: React.FC<ButtonProps> = (p) => {
 
     const elevationClassName = getElevationClassName(elevation);
     const shapeClassName = getShapeClassName(shape);
+    const variantClassName = getVariantClassName(variant);
+    const variantStyles = getVariantStyles(color);
+    const focusableClassName = getFocusableClassName();
+    const focusRingTargetClassName = getFocusRingTargetClassName();
 
     const isAnchor = Boolean(href);
     const Element = isAnchor ? 'a' : 'button';
 
+    // extract children slots
+    let slotLeading: React.ReactNode = leading;
+    let slotTrailing: React.ReactNode = trailing;
+    let otherChildren: React.ReactNode[] = [];
+    React.Children.forEach(children, (child) => {
+        if (isButtonSlot(child, 'leading')) {
+            if (slotLeading === null) slotLeading = child.props.children;
+            return;
+        } else if (isButtonSlot(child, 'trailing')) {
+            if (slotTrailing === null) slotTrailing = child.props.children;
+            return;
+        }
+        otherChildren.push(child as React.ReactNode);
+    });
+
     return (
         <Element
             className={clsx(
-                commonStyles.tzComponent,
+                getTzComponentClassName(),
                 styles.Button,
                 block && styles.block,
                 className,
                 elevationClassName,
                 shapeClassName,
+                focusableClassName,
+                variantClassName,
             )}
             style={{
+                ...variantStyles,
                 ...style,
             }}
             disabled={disabled}
@@ -72,7 +118,31 @@ export const Button: React.FC<ButtonProps> = (p) => {
             aria-disabled={disabled}
             role={isAnchor ? 'button' : undefined}
         >
-            <Text typography="button">{children}</Text>
+            <div className={clsx(styles.layer, styles.untouchable, focusRingTargetClassName)}></div>
+
+            <div
+                className={clsx(
+                    styles.layer,
+                    styles.loaderLayer,
+                    styles.untouchable,
+                    getCenteringClassName('all'),
+                )}
+            ></div>
+
+            <div className={clsx(styles.baseLayer, styles.contentLayer)}>
+                {slotLeading && <div className={clsx(styles.leadingContainer)}>{slotLeading}</div>}
+                <div className={clsx(styles.mainContainer)}>
+                    <Text as="span" typography="button">
+                        {otherChildren}
+                    </Text>
+                </div>
+                {slotTrailing && (
+                    <div className={clsx(styles.trailingContainer)}>{slotTrailing}</div>
+                )}
+            </div>
         </Element>
     );
 };
+
+Button.Leading = ButtonLeading;
+Button.Trailing = ButtonTrailing;

@@ -1,13 +1,13 @@
 import { type JSX } from 'react';
 import clsx from 'clsx';
 import type { Modify, TzieComponentProps } from '../../utils';
-import commonStyles from '../component.module.css';
 import styles from './Text.module.css';
 import {
     getDefaultElementForTypography,
     getTypographyClassName,
     type TzieTypography,
 } from '../../tokens';
+import { getTzComponentClassName } from '../component';
 
 type TextProps = Modify<
     TzieComponentProps,
@@ -37,7 +37,7 @@ export const Text: React.FC<TextProps> = (p) => {
     return (
         <Element
             id={id}
-            className={clsx(commonStyles.tzComponent, styles.Text, typographyClassName, className)}
+            className={clsx(getTzComponentClassName(), styles.Text, typographyClassName, className)}
             style={{
                 ...style,
             }}

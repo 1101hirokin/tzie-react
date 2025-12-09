@@ -21,6 +21,9 @@
     -webkit-app-region: no-drag;
     app-region: no-drag;
 }
+*:focus {
+    outline: none;
+}
 
 /* HTML and Body */
 html,

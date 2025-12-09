@@ -23,6 +23,7 @@ export const getShapeClassName = (shape: TzieShape): string | null => {
         case 'circular':
             return styles['tz-shape-circular'];
         default:
+            console.warn(`Unknown shape: ${shape}`);
             return null;
     }
 };

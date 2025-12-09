@@ -28,7 +28,7 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
-        "@tzie/tokens": "0.0.0-alpha.2",
+        "@tzie/tokens": "0.0.0-alpha.9",
         "clsx": "^2.1.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0"
@@ -46,6 +46,7 @@
         "eslint-plugin-react-hooks": "^7.0.1",
         "eslint-plugin-react-refresh": "^0.4.24",
         "globals": "^16.5.0",
+        "postcss-nesting": "^13.0.2",
         "prettier": "^3.6.2",
         "typescript": "~5.9.3",
         "typescript-eslint": "^8.46.4",

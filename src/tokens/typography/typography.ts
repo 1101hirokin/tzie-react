@@ -51,6 +51,7 @@ export const getTypographyClassName = (typography: TzieTypography): string | nul
         case 'code':
             return styles['tz-typography-code'];
         default:
+            console.warn(`Unknown typography: ${typography}`);
             return null;
     }
 };

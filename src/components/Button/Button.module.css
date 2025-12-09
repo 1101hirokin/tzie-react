@@ -1,13 +1,9 @@
 .Button {
     /* --- Reset styles --- */
     /* Reset button styles */
-    background: none;
-    border: none;
     padding: 0;
     margin: 0;
     font: inherit;
-    color: inherit;
-    cursor: pointer;
 
     /* Reset anchor styles */
     text-decoration: none;
@@ -22,13 +18,55 @@
     /* --- Button Component styles --- */
     display: inline-flex;
     padding: var(--tz-spacing-2x) var(--tz-spacing-3x);
+    position: relative;
+    cursor: pointer;
+
+    transition: background-color var(--tz-motion-standard-duration) var(--tz-motion-standard-easing);
 
     &.block {
         display: block;
         width: 100%;
     }
-}
 
-.Button:focus {
-    outline: revert;
+    /* Positioning layers */
+    .baseLayer {
+        width: 100%;
+        height: 100%;
+    }
+    .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+
+        width: 100%;
+        height: 100%;
+
+        &.untouchable {
+            pointer-events: none;
+        }
+    }
+
+    /* Specific layers */
+    .contentLayer {
+        position: relative;
+
+        display: grid;
+        grid-template-columns: 1fr auto auto auto 1fr;
+        grid-template-areas: '. leading main trailing .';
+        align-items: center;
+        gap: var(--tz-spacing-2x);
+
+        .leadingContainer {
+            grid-area: leading;
+        }
+        .mainContainer {
+            grid-area: main;
+        }
+        .trailingContainer {
+            grid-area: trailing;
+        }
+    }
 }

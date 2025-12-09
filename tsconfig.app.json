@@ -30,5 +30,5 @@
         "noUncheckedSideEffectImports": true
     },
     "include": ["src"],
-    "exclude": ["src/App.tsx", "src/main.tsx"]
+    "exclude": ["src/Demo.tsx", "src/main.tsx"]
 }

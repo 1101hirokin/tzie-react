@@ -1,8 +1,8 @@
 import '@tzie/tokens/tokens.css';
 import './App.css';
-import commonStyles from '../component.module.css';
 import styles from './App.module.css';
 import clsx from 'clsx';
+import { getTzComponentClassName } from '../component';
 
 type AppProps = {
     children?: React.ReactNode;
@@ -11,5 +11,5 @@ type AppProps = {
 export const App: React.FC<AppProps> = (p) => {
     const { children } = p;
 
-    return <div className={clsx(commonStyles.tzComponent, styles.App)}>{children}</div>;
+    return <div className={clsx(getTzComponentClassName(), styles.App)}>{children}</div>;
 };

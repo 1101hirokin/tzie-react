@@ -1,0 +1,12 @@
+/* .tz-focusable がフォーカスイベントを受け取る
+.tz-focus-ring-target がフォーカスリングを表示する要素に付与される 
+これらは親子、隣接しているとは限らない
+*/
+
+.tz-focusable:focus-visible {
+    .tz-focus-ring-target {
+        outline: var(--tz-focus-ring-width) solid
+            var(--tz-focus-ring-color, var(--tz-color-app-system));
+        outline-offset: var(--tz-focus-ring-gap);
+    }
+}

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'unplugin-dts/vite';
 import { resolve } from 'node:path';
+import postcssNesting from 'postcss-nesting';
 
 export default defineConfig({
     plugins: [
@@ -19,6 +20,11 @@ export default defineConfig({
             insertTypesEntry: true,
         }),
     ],
+    css: {
+        postcss: {
+            plugins: [postcssNesting],
+        },
+    },
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
