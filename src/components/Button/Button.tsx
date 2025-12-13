@@ -8,19 +8,25 @@ import {
     type TzieElevation,
     type TzieShape,
 } from '../../tokens';
-import type { Modify, TzieComponentProps } from '../../utils';
+import type { Modify } from '../../utils';
 import styles from './Button.module.css';
-import { getCenteringClassName, getTzComponentClassName } from '../component';
+import {
+    getCenteringClassName,
+    getTzComponentClassName,
+    type TzieComponentProps,
+} from '../component';
 import React from 'react';
 import { ButtonLeading, ButtonTrailing, isButtonSlot, type ButtonSlotFC } from './buttonSlots';
 import { Text } from '../Text/Text';
 import { getFocusRingTargetClassName } from '../../tokens/focusable/focusable';
+import { CircularLoader } from '../CircularLoader/CircularLoader';
 
 type ButtonProps = Modify<
     TzieComponentProps,
     {
         block?: boolean;
         disabled?: boolean;
+        loading?: boolean;
 
         elevation?: TzieElevation;
         shape?: TzieShape;
@@ -55,6 +61,10 @@ export const Button: ButtonCompound = (p) => {
         style,
         children,
 
+        block = false,
+        disabled = false,
+        loading = false,
+
         elevation = 0,
         shape = 'rounded',
         variant = 'filled',
@@ -63,8 +73,7 @@ export const Button: ButtonCompound = (p) => {
 
         leading = null,
         trailing = null,
-        block = false,
-        disabled = false,
+
         onClick,
         href,
         ...rest
@@ -73,7 +82,7 @@ export const Button: ButtonCompound = (p) => {
     const elevationClassName = getElevationClassName(elevation);
     const shapeClassName = getShapeClassName(shape);
     const variantClassName = getVariantClassName(variant);
-    const variantStyles = getVariantStyles(color);
+    const variantStyles = getVariantStyles(disabled ? 'disabled' : color);
     const focusableClassName = getFocusableClassName();
     const focusRingTargetClassName = getFocusRingTargetClassName();
 
@@ -106,6 +115,7 @@ export const Button: ButtonCompound = (p) => {
                 shapeClassName,
                 focusableClassName,
                 variantClassName,
+                loading && styles.loading,
             )}
             style={{
                 ...variantStyles,
@@ -118,8 +128,6 @@ export const Button: ButtonCompound = (p) => {
             aria-disabled={disabled}
             role={isAnchor ? 'button' : undefined}
         >
-            <div className={clsx(styles.layer, styles.untouchable, focusRingTargetClassName)}></div>
-
             <div
                 className={clsx(
                     styles.layer,
@@ -127,7 +135,13 @@ export const Button: ButtonCompound = (p) => {
                     styles.untouchable,
                     getCenteringClassName('all'),
                 )}
-            ></div>
+            >
+                <div className={styles.loaderContainer}>
+                    <CircularLoader className={styles.loader} />
+                </div>
+            </div>
+
+            <div className={clsx(styles.layer, styles.untouchable, focusRingTargetClassName)}></div>
 
             <div className={clsx(styles.baseLayer, styles.contentLayer)}>
                 {slotLeading && <div className={clsx(styles.leadingContainer)}>{slotLeading}</div>}

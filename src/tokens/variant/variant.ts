@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './variant.module.css';
 
 export type TzieVariant = 'filled' | 'outlined' | 'text';
@@ -5,11 +6,11 @@ export type TzieVariant = 'filled' | 'outlined' | 'text';
 export const getVariantClassName = (variant: TzieVariant): string | null => {
     switch (variant) {
         case 'filled':
-            return styles['tz-variant-filled'];
+            return clsx(styles['tz-variant'], styles['filled']);
         case 'outlined':
-            return styles['tz-variant-outlined'];
+            return clsx(styles['tz-variant'], styles['outlined']);
         case 'text':
-            return styles['tz-variant-text'];
+            return clsx(styles['tz-variant'], styles['text']);
         default:
             console.warn(`Unknown variant: ${variant}`);
             return null;

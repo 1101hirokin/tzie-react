@@ -13,14 +13,27 @@ const Demo = () => {
                 onClick={() => {
                     setCount(count + 1);
                 }}
-                variant="text"
+                variant="outlined"
                 elevation={0}
                 shape="rounded"
-                color="hiroki"
+                color="plain"
+                disabled={true}
             >
                 <Button.Leading>+</Button.Leading>
                 Count Up
                 <Button.Trailing>hello</Button.Trailing>
+            </Button>
+            <Button
+                onClick={() => {
+                    setCount(count + 1);
+                }}
+                variant="text"
+                elevation={0}
+                shape="rounded"
+                color="danger"
+                loading
+            >
+                Help
             </Button>
         </App>
     );
