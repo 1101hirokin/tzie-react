@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { App, Button } from './components';
-import './../dist/css/tokens.css';
 
 const Demo = () => {
     const [count, setCount] = useState(0);
@@ -13,11 +12,11 @@ const Demo = () => {
                 onClick={() => {
                     setCount(count + 1);
                 }}
-                variant="outlined"
+                variant="filled"
                 elevation={0}
                 shape="rounded"
                 color="plain"
-                disabled={true}
+                disabled={false}
             >
                 <Button.Leading>+</Button.Leading>
                 Count Up
