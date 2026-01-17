@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import styles from './component.module.css';
+import type { Modify } from '../utils';
 
 export const getTzComponentClassName = () => {
     return styles.tzComponent;
@@ -20,3 +21,21 @@ export const getCenteringClassName = (d: CenteringDirection) => {
 
     return clsx(...classNames);
 };
+
+type TzieDataAttributes = {
+    [dataAttr: `data-${string}`]: string | number | boolean;
+};
+export type TzieComponentProps = Modify<
+    {
+        id?: string;
+
+        className?: string;
+
+        style?: React.CSSProperties;
+
+        children?: React.ReactNode;
+
+        role?: React.AriaRole;
+    },
+    TzieDataAttributes
+>;

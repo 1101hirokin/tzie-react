@@ -1,1 +1,1 @@
-export type { Modify, TzieComponentProps } from './types';
+export type { Modify } from './types';

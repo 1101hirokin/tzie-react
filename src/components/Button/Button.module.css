@@ -17,9 +17,12 @@
 
     /* --- Button Component styles --- */
     display: inline-flex;
-    padding: var(--tz-spacing-2x) var(--tz-spacing-3x);
+    padding-right: var(--tz-spacing-3x);
+    padding-left: var(--tz-spacing-3x);
     position: relative;
     cursor: pointer;
+
+    color: var(--_bg);
 
     transition: background-color var(--tz-motion-standard-duration) var(--tz-motion-standard-easing);
 
@@ -57,16 +60,50 @@
         grid-template-columns: 1fr auto auto auto 1fr;
         grid-template-areas: '. leading main trailing .';
         align-items: center;
-        gap: var(--tz-spacing-2x);
 
         .leadingContainer {
             grid-area: leading;
+            margin-right: var(--tz-spacing-2x);
         }
         .mainContainer {
             grid-area: main;
+            padding-top: var(--tz-spacing-2x);
+            padding-bottom: var(--tz-spacing-2x);
         }
         .trailingContainer {
             grid-area: trailing;
+            margin-left: var(--tz-spacing-2x);
+        }
+    }
+
+    .loaderLayer {
+        display: none;
+
+        .loaderContainer {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            box-sizing: border-box;
+
+            width: 100%;
+            height: 100%;
+
+            .loader {
+                width: 1em;
+                height: 1em;
+            }
+        }
+    }
+
+    &.loading {
+        .loaderLayer {
+            display: block;
+        }
+        .contentLayer {
+            visibility: hidden;
         }
     }
 }

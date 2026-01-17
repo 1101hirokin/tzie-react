@@ -1,14 +1,34 @@
 import { useState } from 'react';
 import { App, Button } from './components';
-import './../dist/css/tokens.css';
 
 const Demo = () => {
     const [count, setCount] = useState(0);
 
     return (
-        <App>
+        <App
+            theme={{
+                name: '',
+                theme: {
+                    color: {},
+                },
+            }}
+        >
             <div>Count: {count}</div>
 
+            <Button
+                onClick={() => {
+                    setCount(count + 1);
+                }}
+                variant="filled"
+                elevation={0}
+                shape="rounded"
+                color="warning"
+                disabled={false}
+            >
+                <Button.Leading>+</Button.Leading>
+                Count Up
+                <Button.Trailing>hello</Button.Trailing>
+            </Button>
             <Button
                 onClick={() => {
                     setCount(count + 1);
@@ -16,11 +36,10 @@ const Demo = () => {
                 variant="text"
                 elevation={0}
                 shape="rounded"
-                color="hiroki"
+                color="danger"
+                loading
             >
-                <Button.Leading>+</Button.Leading>
-                Count Up
-                <Button.Trailing>hello</Button.Trailing>
+                Help
             </Button>
         </App>
     );

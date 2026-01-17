@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@tzie/tokens':
-        specifier: 0.0.0-alpha.9
-        version: 0.0.0-alpha.9
+        specifier: 0.0.0-alpha.20
+        version: 0.0.0-alpha.20
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -520,8 +520,8 @@ packages:
     resolution: {integrity: sha512-BmxxndzEWhE4TIEEMBs8lP3MBWN3jFPs/p6gPm/wkv02o41hI6cq9AuSmGAaTTHPtA1FTi2jBre4A9rm5ZmX+Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@tzie/tokens@0.0.0-alpha.9':
-    resolution: {integrity: sha512-nWOhoZfPA59/tGexVTm0NIufXmrCG2BDm0hHXL9cnzXcNPOsEuWFpo6P0fJYxe0dlZIdZPSKF7M7OvMiGpyTow==}
+  '@tzie/tokens@0.0.0-alpha.20':
+    resolution: {integrity: sha512-nZg454NcL3DmzrbVm8QIL0/JmdHanLJeYuTq1MSYdjQnCjLbyW+1mrIYSC30S2uJM3SnseGT0uvx3uVMRBBCZQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2460,7 +2460,7 @@ snapshots:
       '@typescript-eslint/types': 8.48.1
       eslint-visitor-keys: 4.2.1
 
-  '@tzie/tokens@0.0.0-alpha.9':
+  '@tzie/tokens@0.0.0-alpha.20':
     dependencies:
       '@tokens-studio/sd-transforms': 2.0.2(style-dictionary@5.1.1)
       cac: 6.7.14

@@ -1,13 +1,13 @@
 import { type JSX } from 'react';
 import clsx from 'clsx';
-import type { Modify, TzieComponentProps } from '../../utils';
+import type { Modify } from '../../utils';
 import styles from './Text.module.css';
 import {
     getDefaultElementForTypography,
     getTypographyClassName,
     type TzieTypography,
 } from '../../tokens';
-import { getTzComponentClassName } from '../component';
+import { getTzComponentClassName, type TzieComponentProps } from '../component';
 
 type TextProps = Modify<
     TzieComponentProps,
