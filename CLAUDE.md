@@ -15,6 +15,21 @@ Design system approach
 - Core tokens come from `@tzie/tokens` and are referenced via CSS variables.
 - Local token helpers in `src/tokens/` map semantic props to CSS Modules class names and inline CSS vars.
 - Base component class helper in `src/components/component.ts` provides shared class names and data-* typing.
+- Styling/theme alignment (inferred from code):
+  - Components should be theme-agnostic and rely on token CSS variables, not hard-coded colors.
+  - Visual variants should be applied via token helpers (elevation/shape/typography/variant/focusable/spacing) and CSS Modules.
+  - `App` sets global resets and loads token CSS; per-component styles should not re-define base tokens.
+  - Focus visuals are delegated to `focusable` tokens (`.tz-focusable` + `.tz-focus-ring-target`), not bespoke outlines.
+  - Theme selection is via `data-theme` on `:root`; components should respond to token variable changes without internal state.
+
+Theme mechanism
+- Theme values live in the tokens CSS as `:root` variables with theme overrides in `:root[data-theme="..."]`.
+- The React package does not provide a theme provider; consumers are expected to set `data-theme` on `:root`/`html` (or inject different token CSS).
+- Direction agreed: dynamic theme at runtime, constrained to `@tzie/tokens` schema, keep `data-theme`, and support SSR/SSG/ISR (React-only scope).
+- Theme decisions: base tokens come from `@tzie/tokens` CSS; SSR can skip injecting theme CSS if it doesn't harm SSR/hydration; `ThemeProvider` is optional and theme input is via `App` props.
+- Implemented theme plumbing: `App` accepts `theme`/`themes` and `defaultTheme` props, generates `:root[data-theme="..."]` CSS via `buildThemesCss`, and uses `useTheme` to set `data-theme` on `document.documentElement`.
+- `useTheme` provides a shared hook to read/set `data-theme` for future App-external theme toggles.
+- Theme CSS generator now uses `TzieTheme` directly (the upstream type is now optional-friendly).
 
 Source layout (src/)
 - `components/`: App, Text, Button, CircularLoader, (Accordion stub, not exported).

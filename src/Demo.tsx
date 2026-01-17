@@ -5,7 +5,14 @@ const Demo = () => {
     const [count, setCount] = useState(0);
 
     return (
-        <App>
+        <App
+            theme={{
+                name: '',
+                theme: {
+                    color: {},
+                },
+            }}
+        >
             <div>Count: {count}</div>
 
             <Button
@@ -15,7 +22,7 @@ const Demo = () => {
                 variant="filled"
                 elevation={0}
                 shape="rounded"
-                color="plain"
+                color="warning"
                 disabled={false}
             >
                 <Button.Leading>+</Button.Leading>
